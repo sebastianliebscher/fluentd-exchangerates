@@ -1,4 +1,4 @@
-Get exchange rates from ECB via pandasdmx, send data to RabbitMQ and log to fluentd.
+Get exchange rates from [ECB](https://data.ecb.europa.eu/) via [pandaSDMX](https://pandasdmx.readthedocs.io/en/v1.0/), send the data to [RabbitMQ](https://www.rabbitmq.com/) and log to [Elasticsearch](https://www.elastic.co/de/elasticsearch) via [fluentd](https://github.com/fluent/fluentd).
 
 # pre reqs
 
