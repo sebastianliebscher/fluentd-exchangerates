@@ -53,5 +53,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64
+          cache-from: type=registry,ref=ghcr.io/sebastianliebscher/fluentd-exchangerates-cache:${{ github.ref_name }}
+          cache-to: type=registry,ref=ghcr.io/sebastianliebscher/fluentd-exchangerates-cache:${{ github.ref_name }}
           build-args: |
             IMAGE=${{ matrix.image.version }}
