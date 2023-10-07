@@ -26,7 +26,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: $GITHUB_REPOSITORY
+          images: ${{ github.repository }}
           flavor: |
             latest=false
             suffix=${{ matrix.image.suffix }}
