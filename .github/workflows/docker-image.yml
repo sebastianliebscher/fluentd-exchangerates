@@ -10,8 +10,15 @@ on:
     branches: [ "main" ]
 
 jobs:
-  docker:
+  build-image:
+    name: Build ${{ matrix.image }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - {version: "3.9-slim-bookworm", suffix: ''}
+          - {version: "3.10-slim-bookworm", suffix: '-py310'}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,6 +29,7 @@ jobs:
           images: sebastianliebscher/fluentd-exchangerates
           flavor: |
             latest=false
+            suffix=${{ matrix.image.suffix }}
           tags: |
             type=sha,prefix=,format=long
             type=ref,event=pr
@@ -44,3 +52,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          platforms: linux/amd64
+          build-args: |
+            IMAGE=${{ matrix.image.version }}
