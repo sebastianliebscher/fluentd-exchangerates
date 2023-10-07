@@ -11,7 +11,7 @@ on:
 
 jobs:
   build-image:
-    name: Build ${{ matrix.image }}
+    name: Build ${{ matrix.image.version }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
