@@ -30,7 +30,6 @@ jobs:
   build-image:
     name: Build ${{ matrix.image.version }}
     needs: config
-    if: needs.config.outputs.has-secrets
     runs-on: ubuntu-latest
     permissions:
       packages: write
