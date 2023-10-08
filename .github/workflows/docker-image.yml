@@ -86,6 +86,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build if necessary and push
+        if: needs.config.outputs.has-secrets
         uses: docker/build-push-action@v5
         with:
           context: .
